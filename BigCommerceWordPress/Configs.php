@@ -1,6 +1,7 @@
 <?php
 
-class BigCommerceSideOutConfig
+class Configs
+
 {
     const BIG_COMMERCE_SO_STORE_ID = 'your_credentials';
 
