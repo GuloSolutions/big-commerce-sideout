@@ -13,6 +13,11 @@
     "require-dev": {
         "phpunit/phpunit": "~5.7"
     },
+    "autoload": {
+        "psr-0": {
+            "BigCommerceWordpress": "/"
+        }
+    },
     "config": {
         "vendor-dir": "vendor/"
     }
