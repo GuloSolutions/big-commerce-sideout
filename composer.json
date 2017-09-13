@@ -17,8 +17,5 @@
         "psr-0": {
             "Acme": "src/"
         }
-    },
-    "config": {
-        "vendor-dir": "vendor/"
     }
 }
