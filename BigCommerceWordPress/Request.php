@@ -2,14 +2,14 @@
 
 namespace BigCommerceWordPress;
 
-require dirname(__FILE__) . 'Configs.php';
+require 'Configs.php';
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Stream\Stream;
 use Bigcommerce\Api\Connection;
 use Bigcommerce\Api\Client as Bigcommerce;
 
-class BigCommerceWordpress
+class Request
 {
     protected $store_id;
     protected $token;
