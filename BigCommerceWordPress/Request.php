@@ -22,7 +22,7 @@ class Request
         $this->id = Configs::getClientId();
     }
 
-    public function sendRequest()
+    public function sendRequest($filter=NULL)
     {
         Bigcommerce::configure(array(
             'client_id' => $this->id,
@@ -30,7 +30,7 @@ class Request
             'store_hash' => $this->store_id
         ));
 
-        $products  = Bigcommerce::getProducts();
+        $products  = Bigcommerce::getProducts($filter);
 
         return $products;
     }
