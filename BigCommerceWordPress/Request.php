@@ -18,22 +18,15 @@ class Request
         $this->token = \Configs::BIG_COMMERCE_SO_TOKEN;
         $this->store_id = \Configs::BIG_COMMERCE_SO_STORE_ID;
         $this->id = \Configs::BIG_COMMERCE_SO_CLIENT_ID;
+        $this->configure();
     }
 
-    public function sendRequest(array $filter)
+    private function configure()
     {
         Bigcommerce::configure(array(
             'client_id' => $this->id,
             'auth_token' => $this->token,
             'store_hash' => $this->store_id
         ));
-
-        if (!is_null($filter)) {
-            $products  = Bigcommerce::getProducts($filter);
-            return $products;
-        }
-
-        $products = Bigcommerce::getProducts();
-        return $products;
     }
 }
