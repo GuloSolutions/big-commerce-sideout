@@ -1,5 +1,5 @@
 {
-    "name": "big-commerce-wordpress",
+    "name": "Gulo/big-commerce-wordpress",
     "description": "Wrapper around BigCommerce API",
     "keywords": ["API", "BigCommerce"],
     "version": "1.0",
