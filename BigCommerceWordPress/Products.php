@@ -1,46 +1,59 @@
 <?php
-
 namespace BigCommerceWordPress;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Stream\Stream;
 use Bigcommerce\Api\Connection;
 use Bigcommerce\Api\Client as Bigcommerce;
+use Stash;
 
-class Products extends Request {
+class Products
+{
+    public $driver;
+    public $pool;
 
-
-	public function  __construct()
-	{
-
-	}
-
-	public function getProducts ()
+    public function __construct()
     {
-        $products = Bigcommerce::getProducts();
-        return $products;
+        $this->driver = new Stash\Driver\FileSystem(array());
+        $this->pool = new Stash\Pool($this->driver);
     }
 
-    public function getFeaturedProducts(array $filter)
+    public function getProducts()
     {
-        if (!is_null($filter)) {
-            $products  = Bigcommerce::getProducts($filter);
+        $item = $this->pool->getItem('results');
+
+        $data = $item->get();
+
+        if($item->isMiss()){
+            $data = Bigcommerce::getProducts();
+            $this->pool->save($item->set($data));
         }
 
-        $products  = Bigcommerce::getProducts($filter);
-        return $products;
+        return $data;
+    }
+
+    public function getFeaturedProducts()
+    {
+        $item = $this->pool->getItem('featured_results');
+
+        $data = $item->get();
+
+         if($item->isMiss()){
+            $data = Bigcommerce::getProducts(["is_featured" => "true"]);
+            $this->pool->save($item->set($data));
+        }
+
+        return $data;
     }
 
     public function getSetNumberProducts(integer $length)
     {
-
-    	$filter = [];
+        $filter = [];
         if (!is_null($length)) {
-        	$filter = ["limit" => $length];
+            $filter = ["limit" => $length];
         }
 
         $products  = Bigcommerce::getProducts($filter);
         return $products;
     }
 }
-
