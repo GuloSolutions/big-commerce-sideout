@@ -73,7 +73,7 @@ class Products extends Request
         $this->cache = true;
     }
 
-        public function disableCache()
+    public function disableCache()
     {
         $this->cache = false;
     }
