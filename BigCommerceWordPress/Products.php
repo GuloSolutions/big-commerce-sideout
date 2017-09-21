@@ -68,13 +68,14 @@ class Products extends Request
         return $products;
     }
 
-    public function setCache($value)
+    public function enableCache()
     {
-        if($value === "true"){
-            $this->cache = true;
-        } else {
-            $this->cache = false;
-        }
+        $this->cache = true;
+    }
+
+        public function disableCache()
+    {
+        $this->cache = false;
     }
 
     public function returnCache()
