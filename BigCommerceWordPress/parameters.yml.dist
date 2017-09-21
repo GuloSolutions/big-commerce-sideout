@@ -1,7 +1,0 @@
----
-
-parameters:
-  - store_id
-  - client_id
-  - token
-...
