@@ -15,9 +15,9 @@ class Request
 
     public function __construct()
     {
-        $this->token = \Configs::BIG_COMMERCE_SO_TOKEN;
-        $this->store_id = \Configs::BIG_COMMERCE_SO_STORE_ID;
-        $this->id = \Configs::BIG_COMMERCE_SO_CLIENT_ID;
+        $this->token = Configs::BIG_COMMERCE_SO_TOKEN;
+        $this->store_id = Configs::BIG_COMMERCE_SO_STORE_ID;
+        $this->id = Configs::BIG_COMMERCE_SO_CLIENT_ID;
         $this->configure();
     }
 
