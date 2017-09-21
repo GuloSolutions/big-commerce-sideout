@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-0": {
-            "BigCommerceWordpress": "/BigCommerceWordPress"
+            "BigCommerceWordPress": "/BigCommerceWordPress/BigCommerceWordPress"
         }
     },
     "config": {
