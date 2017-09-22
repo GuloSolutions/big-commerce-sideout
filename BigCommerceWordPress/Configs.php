@@ -2,7 +2,6 @@
 namespace BigCommerceWordPress;
 
 class Configs
-
 {
     const BIG_COMMERCE_SO_STORE_ID = 'store_id';
 
