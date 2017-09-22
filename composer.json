@@ -8,7 +8,8 @@
     "require": {
         "php": ">=5.6.4",
         "guzzlehttp/guzzle": "^6.2",
-        "bigcommerce/api": "~3.0"
+        "bigcommerce/api": "~3.0",
+        "tedivm/stash": "^0.14.2"
 
     },
     "require-dev": {
