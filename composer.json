@@ -9,7 +9,6 @@
         "php": ">=5.6.4",
         "guzzlehttp/guzzle": "^6.2",
         "bigcommerce/api": "~3.0",
-        "incenteev/composer-parameter-handler": "~2.0"
 
     },
     "require-dev": {
@@ -22,20 +21,6 @@
     },
     "config": {
         "vendor-dir": "vendor/"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-        ],
-        "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-        ]
-    },
-    "extra": {
-        "incenteev-parameters": {
-            "file": "BigCommerceWordPress/parameters.yml",
-            "dist-file": "BigCommerceWordPress/parameters.yml.dist",
-             "keep-outdated": true
-        }
     }
+
 }
