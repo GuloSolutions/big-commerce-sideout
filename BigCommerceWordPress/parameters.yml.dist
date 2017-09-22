@@ -1,0 +1,7 @@
+---
+
+parameters:
+  - store_id:
+  - token:
+  - id:
+...
