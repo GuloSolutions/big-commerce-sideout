@@ -1,12 +1,18 @@
 <?php
 namespace BigCommerceWordPress;
+use Spyc;
 
 class Configs
-
 {
-    const BIG_COMMERCE_SO_STORE_ID = 'store_id';
 
-    const BIG_COMMERCE_SO_TOKEN = 'token';
+    public function __construct()
+    {
+    }
 
-    const BIG_COMMERCE_SO_CLIENT_ID = 'id';
+    public function load()
+    {
+    	$file = ABSPATH . 'wp-content/plugins/gulo-solutions/BigCommerceWordPress/BigCommerceWordPress/parameters.yml';
+    	$data = spyc_load_file($file);
+    	return $data;
+    }
 }

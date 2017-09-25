@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Stream\Stream;
 use Bigcommerce\Api\Connection;
 use Bigcommerce\Api\Client as Bigcommerce;
+use BigCommerceWordPress\Configs;
 
 class Request
 {
@@ -15,9 +16,11 @@ class Request
 
     public function __construct()
     {
-        $this->token = Configs::BIG_COMMERCE_SO_TOKEN;
-        $this->store_id = Configs::BIG_COMMERCE_SO_STORE_ID;
-        $this->id = Configs::BIG_COMMERCE_SO_CLIENT_ID;
+
+        $configs = new Configs;
+        $this->store_id = $configs->load()['parameters'][0];
+        $this->token = $configs->load()['parameters'][1];
+        $this->id = $configs->load()['parameters'][2];
         $this->configure();
     }
 
