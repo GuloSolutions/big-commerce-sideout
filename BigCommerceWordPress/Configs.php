@@ -4,7 +4,6 @@ use Spyc;
 
 class Configs
 {
-
     public function __construct()
     {
     }
