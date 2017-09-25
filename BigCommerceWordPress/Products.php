@@ -31,8 +31,8 @@ class Products extends Request
             if($data === false){
                 $data = Bigcommerce::getProducts();
                 $this->pool->save($item->set($data));
+                return $data;
             }
-            return $data;
         } else {
             $data = Bigcommerce::getProducts();
             return $data;
@@ -49,17 +49,18 @@ class Products extends Request
             if($data === false){
                 $data = Bigcommerce::getProducts(["is_featured" => "true"]);
                 $this->pool->save($item->set($data));
+                return $data;
+
             }
-            return $data;
-        } else {
+        else {
             $data = Bigcommerce::getProducts(["is_featured" => "true"]);
             return $data;
+            }
         }
     }
 
     public function getSetNumberProducts(integer $length)
     {
-        $filter = [];
         if (!is_null($length)) {
             $filter = ["limit" => $length];
         }
