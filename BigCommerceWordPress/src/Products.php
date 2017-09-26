@@ -47,7 +47,7 @@ class Products extends Request
             $data = $item->get();
 
             if($data === false){
-                $data = Bigcommerce::getProducts(["is_featured" => "true"]);
+                $data = Bigcommerce::getProducts(["is_featured" => true]);
                 $this->pool->save($item->set($data));
                 return $data;
 

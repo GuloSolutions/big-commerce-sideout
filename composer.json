@@ -17,10 +17,14 @@
     },
     "autoload": {
         "psr-4": {
-            "BigCommerceWordPress\\": "BigCommerceWordPress/src"
+            "BigCommerceWordPress\\": "BigCommerceWordPress/src",
+            "BigCommerceWordPress\\Tests\\": "BigCommerceWordPress/tests"
         }
     },
     "config": {
         "vendor-dir": "vendor/"
-    }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+  }
 }
