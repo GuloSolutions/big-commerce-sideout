@@ -16,7 +16,6 @@ class Request
 
     public function __construct()
     {
-
         $configs = new Configs;
         $this->store_id = $configs->load()['parameters'][0];
         $this->token = $configs->load()['parameters'][1];

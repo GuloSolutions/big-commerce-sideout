@@ -16,12 +16,15 @@
         "phpunit/phpunit": "~6.3"
     },
     "autoload": {
-        "psr-0": {
-            "BigCommerceWordPress\\": "/"
+        "psr-4": {
+            "BigCommerceWordPress\\": "BigCommerceWordPress/src",
+            "BigCommerceWordPress\\Tests\\": "BigCommerceWordPress/tests"
         }
     },
     "config": {
         "vendor-dir": "vendor/"
-    }
-
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+  }
 }

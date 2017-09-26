@@ -1,23 +1,35 @@
 <?php
-namespace BigCommerceWordPress\Tests;
+
+require_once('src/Request.php');
+require_once('src/Configs.php');
+require_once('src/Products.php');
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Stream\Stream;
 use Bigcommerce\Api\Connection;
 use Bigcommerce\Api\Client as Bigcommerce;
-use BigCommerceWordPress\Configs;
 use PHPUnit\Framework\TestCase;
-use BigCommerceWordPress\Products;
-use BigCommerceWordPress\Request;
 
 class ProductsTest extends TestCase
 {
 	public function testCount()
 	{
-		$request = new Request;
-        $products = new Products;
-        $response = $products->getSetNumberofProducts(7);
+		$request = new BigCommerceWordPress\Request;
+        $products = new BigCommerceWordPress\Products;
+         $this->assertInstanceof('Products', $product);
+
+        $response = $products->getSetNumberOfProducts(7);
         $responseCount = count($response);
-        $thisAssertEquals(7, $responseCount);
+        //$this->AssertEquals(7, $responseCount);
 	}
+
+	public function testFeaturedProducts()
+    {
+        $request = new BigCommerceWordPress\Request;
+        $products = new BigCommerceWordPress\Products;
+        $featured = $products->getFeaturedProducts();
+        //array keys are protected so we can only get a numeric key
+        $this->assertContains('is_featured', $featured);
+
+    }
 }
