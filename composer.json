@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "BigCommerceWordPress\\": "BigCommerceWordPress/src",
+            "BigCommerceWordPress\\": "src",
             "BigCommerceWordPress\\Tests\\": "BigCommerceWordPress/tests"
         }
     },
