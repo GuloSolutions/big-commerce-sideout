@@ -91,4 +91,14 @@ class Products extends Request
     {
         return $this->cache;
     }
+
+    /*
+     * delete entire cache
+     * @return void
+     */
+
+    public function deleteAllCache()
+    {
+        $this->pool->clear();
+    }
 }
