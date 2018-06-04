@@ -45,13 +45,13 @@ class Products extends Request
     public function getFeaturedProducts()
     {
         if ($this->returnCache() === true)  {
-            $item = $this->pool->getItem('featured_results');
+            $this->item = $this->pool->getItem('featured_results');
 
-            $data = $item->get();
+            $data = $this->item->get();
 
             if($data === false){
                 $data = Bigcommerce::getProducts(["is_featured" => true]);
-                $this->pool->save($item->set($data));
+                $this->pool->save($this->item->set($data));
                 $this->setExpiration();
                 return $data;
 
