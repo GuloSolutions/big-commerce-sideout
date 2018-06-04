@@ -13,6 +13,7 @@ class Products extends Request
     public $driver;
     public $pool;
     public $cache;
+    public $expiration;
     const  CACHE_EXPIRE = 3600;
 
     public function __construct()
@@ -51,6 +52,7 @@ class Products extends Request
             if($data === false){
                 $data = Bigcommerce::getProducts(["is_featured" => true]);
                 $this->pool->save($item->set($data));
+                $this->setExpiration();
                 return $data;
 
             }
