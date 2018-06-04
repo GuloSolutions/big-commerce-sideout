@@ -1,8 +1,8 @@
 <?php
 
-require_once('src/Request.php');
-require_once('src/Configs.php');
-require_once('src/Products.php');
+require_once('../../vendor/autoload.php');
+// require_once('src/Configs.php');
+// require_once('src/Products.php');
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Stream\Stream;
@@ -20,7 +20,7 @@ class ProductsTest extends TestCase
 
         $response = $products->getSetNumberOfProducts(7);
         $responseCount = count($response);
-        //$this->AssertEquals(7, $responseCount);
+        $this->AssertEquals(7, $responseCount);
 	}
 
 	public function testFeaturedProducts()
@@ -28,7 +28,6 @@ class ProductsTest extends TestCase
         $request = new BigCommerceWordPress\Request;
         $products = new BigCommerceWordPress\Products;
         $featured = $products->getFeaturedProducts();
-        //array keys are protected so we can only get a numeric key
         $this->assertContains('is_featured', $featured);
 
     }
