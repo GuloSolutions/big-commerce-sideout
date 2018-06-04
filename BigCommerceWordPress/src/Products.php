@@ -41,7 +41,7 @@ class Products extends Request
                     if (!$data) {
                         $error = Bigcommerce::getLastError();
                         error_log(print_r($error->code), true);
-                        error_log(print_r($error->code), true);
+                        error_log(print_r($error->message), true);
                     }
                 } catch (Exception $e) {
                     error_log(print_r($e), true);
@@ -56,7 +56,7 @@ class Products extends Request
                 if (!$data) {
                     $error = Bigcommerce::getLastError();
                     error_log(print_r($error->code), true);
-                    error_log(print_r($error->code), true);
+                    error_log(print_r($error->message), true);
                 }
             } catch (Exception $e) {
                 error_log(print_r($e), true);
@@ -79,7 +79,7 @@ class Products extends Request
                     if (!$data) {
                         $error = Bigcommerce::getLastError();
                         error_log(print_r($error->code), true);
-                        error_log(print_r($error->code), true);
+                        error_log(print_r($error->message), true);
                     }
                 } catch (Exception $e) {
                     error_log(print_r($e), true);
@@ -93,7 +93,7 @@ class Products extends Request
                     if (!$data) {
                         $error = Bigcommerce::getLastError();
                         error_log(print_r($error->code), true);
-                        error_log(print_r($error->code), true);
+                        error_log(print_r($error->message), true);
                     }
                 } catch (Exception $e) {
                     error_log(print_r($e), true);
@@ -114,7 +114,7 @@ class Products extends Request
             if (!$products) {
                 $error = Bigcommerce::getLastError();
                 error_log(print_r($error->code), true);
-                error_log(print_r($error->code), true);
+                error_log(print_r($error->message), true);
             }
         } catch (Exception $e) {
             error_log(print_r($e), true);
