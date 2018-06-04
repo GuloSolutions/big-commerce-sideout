@@ -13,11 +13,13 @@ class Products extends Request
     public $driver;
     public $pool;
     public $cache;
+    const  CACHE_EXPIRE = 3600;
 
     public function __construct()
     {
         $this->driver = new Stash\Driver\FileSystem(array());
         $this->pool = new Stash\Pool($this->driver);
+        $this->expiration = self::CACHE_EXPIRE;
         $this->cache = true;
     }
 
@@ -67,6 +69,11 @@ class Products extends Request
 
         $products  = Bigcommerce::getProducts($filter);
         return $products;
+    }
+
+    public function setExpiration()
+    {
+        $this->item->expiresAfter($this->expiration);
     }
 
     public function enableCache()
