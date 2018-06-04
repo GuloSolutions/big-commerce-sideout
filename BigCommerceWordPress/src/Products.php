@@ -21,7 +21,7 @@ class Products extends Request
         $this->driver = new Stash\Driver\FileSystem(array());
         $this->pool = new Stash\Pool($this->driver);
         $this->expiration = self::CACHE_EXPIRE;
-        $this->cache = false;
+        $this->cache = true;
     }
 
     public function getProducts()
