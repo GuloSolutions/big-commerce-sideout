@@ -29,16 +29,39 @@ class Products extends Request
         if ($this->returnCache() === true) {
             $this->item = $this->pool->getItem('results');
 
-            $data = $this->item->get();
+            try {
+                $data = $this->item->get();
+            } catch (Exception $e) {
+                error_log(print_r($e), true);
+            }
 
             if ($data === false) {
-                $data = Bigcommerce::getProducts();
+                try {
+                    $data = Bigcommerce::getProducts();
+                     if (!$data) {
+                        $error = Bigcommerce::getLastError();
+                        error_log(print_r($error->code), true);
+                        error_log(print_r($error->code), true);
+                    }
+                } catch (Exception $e) {
+                    error_log(print_r($e), true);
+                }
                 $this->pool->save($this->item->set($data));
                 $this->setExpiration();
                 return $data;
             }
         } else {
-            $data = Bigcommerce::getProducts();
+            try {
+                $data = Bigcommerce::getProducts();
+                 if (!$data) {
+                    $error = Bigcommerce::getLastError();
+                    error_log(print_r($error->code), true);
+                    error_log(print_r($error->code), true);
+                }
+            } catch (Exception $e){
+                error_log(print_r($e), true)
+            }
+
             return $data;
         }
     }
@@ -51,12 +74,30 @@ class Products extends Request
             $data = $this->item->get();
 
             if ($data === false) {
-                $data = Bigcommerce::getProducts(["is_featured" => true]);
-                $this->pool->save($this->item->set($data));
-                $this->setExpiration();
-                return $data;
+                try {
+                    $data = Bigcommerce::getProducts(["is_featured" => true]);
+                    if (!$data) {
+                        $error = Bigcommerce::getLastError();
+                        error_log(print_r($error->code), true);
+                        error_log(print_r($error->code), true);
+                    }
+                } catch (Exception $e) {
+                    error_log(print_r($e), true);
+                }
+                    $this->pool->save($this->item->set($data));
+                    $this->setExpiration();
+                    return $data;
             } else {
-                $data = Bigcommerce::getProducts(["is_featured" => "true"]);
+                try {
+                    $data = Bigcommerce::getProducts(["is_featured" => "true"]);
+                    if (!$data) {
+                        $error = Bigcommerce::getLastError();
+                        error_log(print_r($error->code), true);
+                        error_log(print_r($error->code), true);
+                    }
+                } catch (Exception $e) {
+                    error_log(print_r($e), true);
+                }
                 return $data;
             }
         }
@@ -68,7 +109,17 @@ class Products extends Request
             $filter = ["limit" => $length];
         }
 
-        $products  = Bigcommerce::getProducts($filter);
+        try {
+            $products  = Bigcommerce::getProducts($filter);
+            if (!$products) {
+                $error = Bigcommerce::getLastError();
+                error_log(print_r($error->code), true);
+                error_log(print_r($error->code), true);
+            }
+        } catch (Exception $e) {
+            error_log(print_r($e), true);
+        }
+
         return $products;
     }
 
