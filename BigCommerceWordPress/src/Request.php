@@ -13,13 +13,16 @@ class Request
     protected $token;
     protected $store_id;
     protected $id;
+    protected $params;
 
     public function __construct()
     {
         $configs = new Configs;
-        $this->store_id = $configs->load()['parameters'][0];
-        $this->token = $configs->load()['parameters'][1];
-        $this->id = $configs->load()['parameters'][2];
+        $params = $configs->load()['parameters'];
+
+        $this->store_id = $params[0]['store_id'];
+        $this->token = $params[1]['token'];
+        $this->id = $params[2]['id'];
         $this->configure();
     }
 
