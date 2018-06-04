@@ -62,9 +62,9 @@ class Products extends Request
         }
     }
 
-    public function getSetNumberProducts(integer $length)
+    public function getSetNumberProducts($length)
     {
-        if (!is_null($length)) {
+        if (!is_null($length) && is_int($length)) {
             $filter = ["limit" => $length];
         }
 
