@@ -38,7 +38,7 @@ class Products extends Request
             if ($data === false) {
                 try {
                     $data = Bigcommerce::getProducts();
-                     if (!$data) {
+                    if (!$data) {
                         $error = Bigcommerce::getLastError();
                         error_log(print_r($error->code), true);
                         error_log(print_r($error->code), true);
@@ -53,13 +53,13 @@ class Products extends Request
         } else {
             try {
                 $data = Bigcommerce::getProducts();
-                 if (!$data) {
+                if (!$data) {
                     $error = Bigcommerce::getLastError();
                     error_log(print_r($error->code), true);
                     error_log(print_r($error->code), true);
                 }
-            } catch (Exception $e){
-                error_log(print_r($e), true)
+            } catch (Exception $e) {
+                error_log(print_r($e), true);
             }
 
             return $data;
@@ -84,9 +84,9 @@ class Products extends Request
                 } catch (Exception $e) {
                     error_log(print_r($e), true);
                 }
-                    $this->pool->save($this->item->set($data));
-                    $this->setExpiration();
-                    return $data;
+                $this->pool->save($this->item->set($data));
+                $this->setExpiration();
+                return $data;
             } else {
                 try {
                     $data = Bigcommerce::getProducts(["is_featured" => "true"]);
