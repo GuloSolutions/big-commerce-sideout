@@ -13,8 +13,7 @@ class Products extends Request
     public $pool;
     public $cache;
     public $expiration;
-    //const CACHE_EXPIRE = 86400;
-    const  CACHE_EXPIRE = 3600;
+    const CACHE_EXPIRE = 86400;
 
     public function __construct()
     {
@@ -28,7 +27,6 @@ class Products extends Request
     {
         if ($this->returnCache() === true) {
             $this->item = $this->pool->getItem('results');
-
             try {
                 $data = $this->item->get();
             } catch (Exception $e) {
