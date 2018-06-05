@@ -20,7 +20,7 @@ class Request
         $configs = new Configs;
         $params = $configs->load()['parameters'];
 
-        if (isset($params[0] && isset($params[1]) && isset($params[2])) {
+        if (isset($params[0]) && isset($params[1]) && isset($params[2])) {
             $this->store_id = $params[0];
             $this->token = $params[1];
             $this->id = $params[2];
