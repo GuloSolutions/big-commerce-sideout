@@ -28,7 +28,6 @@ class Request
 
     private function configure()
     {
-        error_log(print_r($this->id), true);
         Bigcommerce::configure(array(
             'client_id' => $this->id,
             'auth_token' => $this->token,

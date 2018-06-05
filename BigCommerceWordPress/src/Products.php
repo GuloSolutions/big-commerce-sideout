@@ -39,9 +39,7 @@ class Products extends Request
                 try {
                     $data = Bigcommerce::getProducts();
                     if (!$data) {
-                        $error = Bigcommerce::getLastError();
-                        error_log(print_r($error->code), true);
-                        error_log(print_r($error->message), true);
+                        $this->checkForError();
                     }
                 } catch (Exception $e) {
                     error_log(print_r($e), true);
@@ -54,9 +52,7 @@ class Products extends Request
             try {
                 $data = Bigcommerce::getProducts();
                 if (!$data) {
-                    $error = Bigcommerce::getLastError();
-                    error_log(print_r($error->code), true);
-                    error_log(print_r($error->message), true);
+                    $this->checkForError();
                 }
             } catch (Exception $e) {
                 error_log(print_r($e), true);
@@ -77,9 +73,7 @@ class Products extends Request
                 try {
                     $data = Bigcommerce::getProducts(["is_featured" => true]);
                     if (!$data) {
-                        $error = Bigcommerce::getLastError();
-                        error_log(print_r($error->code), true);
-                        error_log(print_r($error->message), true);
+                        $this->checkForError();
                     }
                 } catch (Exception $e) {
                     error_log(print_r($e), true);
@@ -91,9 +85,7 @@ class Products extends Request
                 try {
                     $data = Bigcommerce::getProducts(["is_featured" => "true"]);
                     if (!$data) {
-                        $error = Bigcommerce::getLastError();
-                        error_log(print_r($error->code), true);
-                        error_log(print_r($error->message), true);
+                        $this->checkForError();
                     }
                 } catch (Exception $e) {
                     error_log(print_r($e), true);
@@ -112,9 +104,7 @@ class Products extends Request
         try {
             $products  = Bigcommerce::getProducts($filter);
             if (!$products) {
-                $error = Bigcommerce::getLastError();
-                error_log(print_r($error->code), true);
-                error_log(print_r($error->message), true);
+                $this->checkForError();
             }
         } catch (Exception $e) {
             error_log(print_r($e), true);
@@ -151,5 +141,14 @@ class Products extends Request
     public function deleteAllCache()
     {
         $this->pool->clear();
+    }
+
+    public function checkForError()
+    {
+        $error = Bigcommerce::getLastError();
+        if ($error) {
+            error_log(print_r($error->code), true);
+            error_log(print_r($error->message), true);
+        }
     }
 }
